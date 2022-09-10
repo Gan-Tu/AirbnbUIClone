@@ -1,6 +1,12 @@
 import React from "react";
 import Image from "next/image";
-import { SearchIcon } from "@heroicons/react/solid";
+import {
+  SearchIcon,
+  GlobeAltIcon,
+  MenuIcon,
+  UserCircleIcon,
+  UsersIcon
+} from "@heroicons/react/solid";
 
 function Header() {
   return (
@@ -19,12 +25,22 @@ function Header() {
         <input
           type="text"
           placeholder="Start your search"
-          className="grow bg-transparent pl-5 text-sm text-gray-500 outline-none placeholder:text-gray-400"
+          className="grow border-transparent bg-transparent pl-5 text-sm text-gray-500 outline-none placeholder:text-gray-400"
         />
         <SearchIcon className="hidden h-8 cursor-pointer rounded-full bg-red-400 p-2 text-white md:mx-2 md:inline-flex" />
       </div>
 
-      <div className="text-center">Become a host</div>
+      <div className="flex items-center justify-end space-x-2 text-gray-700">
+        <p className=" hidden cursor-pointer rounded-full py-2 px-4 text-sm font-semibold hover:bg-gray-100 lg:inline">
+          Become a host
+        </p>
+        <GlobeAltIcon className="h-9 cursor-pointer rounded-full p-2 hover:bg-gray-100" />
+
+        <div className="flex cursor-pointer items-center space-x-2 rounded-full border p-2 hover:shadow-md">
+          <MenuIcon className="h-6" />
+          <UserCircleIcon className="h-6" />
+        </div>
+      </div>
     </header>
   );
 }
