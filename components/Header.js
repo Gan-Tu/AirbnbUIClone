@@ -7,6 +7,7 @@ import {
   UserCircleIcon,
   UsersIcon
 } from "@heroicons/react/solid";
+import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
@@ -75,19 +76,32 @@ function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            <div className="mb-4 flex items-center border-b">
+            <div className="mb-4 flex items-center border-b pb-2">
               <h2 className="flex-grow pl-4 text-lg font-semibold">
                 Number of Guests
               </h2>
               <UsersIcon className="h-5 px-4" />
-              <input
-                type="number"
-                value={numberOfGuests}
-                onChange={(e) => setNumberOfGuests(e.target.value)}
-                min={1}
-                max={99}
-                className="w-14 pl-2 text-sm font-light text-airbnb outline-none"
-              />
+              <button
+                onClick={() =>
+                  setNumberOfGuests(Math.max(1, numberOfGuests - 1))
+                }
+                disabled={numberOfGuests <= 1}
+                className="disabled:opacity-40"
+              >
+                <MinusCircleIcon className="h-5 px-4" />
+              </button>
+              <p className="w-5 text-center text-base font-light text-gray-700">
+                {numberOfGuests}
+              </p>
+              <button
+                onClick={() =>
+                  setNumberOfGuests(Math.min(99, numberOfGuests + 1))
+                }
+                disabled={numberOfGuests >= 99}
+                className="disabled:opacity-40"
+              >
+                <PlusCircleIcon className="h-5 px-4" />
+              </button>
             </div>
             <DateRangePicker
               className="text-base font-normal"
