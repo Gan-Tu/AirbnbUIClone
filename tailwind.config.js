@@ -5,7 +5,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        airbnb: "#FD5B61"
+      }
+    }
   },
   plugins: [require("tailwind-scrollbar-hide")]
 };
