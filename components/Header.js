@@ -31,7 +31,7 @@ function Header() {
       </div>
 
       <div className="flex items-center justify-end space-x-2 text-gray-700">
-        <p className=" hidden cursor-pointer rounded-full py-2 px-4 text-sm font-semibold hover:bg-gray-100 lg:inline">
+        <p className="hidden cursor-pointer rounded-full py-2 px-4 text-sm font-semibold hover:bg-gray-100 lg:inline">
           Become a host
         </p>
         <GlobeAltIcon className="h-9 cursor-pointer rounded-full p-2 hover:bg-gray-100" />
