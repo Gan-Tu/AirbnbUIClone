@@ -10,6 +10,7 @@ import {
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
+import { motion, AnimatePresence } from "framer-motion";
 
 function Header() {
   const [searchInput, setSearchInput] = useState("");
@@ -30,7 +31,7 @@ function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 items-center bg-white p-5 shadow-md transition duration-200 md:px-10 ">
+    <header className="sticky top-0 z-50 grid grid-cols-3 items-center bg-white p-5 shadow-md md:px-10 ">
       <div className="relative my-auto flex h-10 cursor-pointer items-center">
         <Image
           src="https://links.papareact.com/qd3"
@@ -64,42 +65,51 @@ function Header() {
         </div>
       </div>
 
-      {searchInput && (
-        <div className="col-span-3 mx-auto mt-3 flex flex-col p-3">
-          <div className="mb-4 flex items-center border-b">
-            <h2 className="flex-grow pl-4 text-lg font-semibold">
-              Number of Guests
-            </h2>
-            <UsersIcon className="h-5 px-4" />
-            <input
-              type="number"
-              value={numberOfGuests}
-              onChange={(e) => setNumberOfGuests(e.target.value)}
-              min={1}
-              max={99}
-              className="w-14 pl-2 text-sm font-light text-airbnb outline-none"
+      <AnimatePresence>
+        {searchInput && (
+          <motion.div
+            layout
+            className="col-span-3 mx-auto mt-3 flex flex-col p-3"
+            transition={{ duration: 0.2 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div className="mb-4 flex items-center border-b">
+              <h2 className="flex-grow pl-4 text-lg font-semibold">
+                Number of Guests
+              </h2>
+              <UsersIcon className="h-5 px-4" />
+              <input
+                type="number"
+                value={numberOfGuests}
+                onChange={(e) => setNumberOfGuests(e.target.value)}
+                min={1}
+                max={99}
+                className="w-14 pl-2 text-sm font-light text-airbnb outline-none"
+              />
+            </div>
+            <DateRangePicker
+              className="text-base font-normal"
+              ranges={[selectionRange]}
+              minDate={new Date()}
+              onChange={({ selection }) => setSelectionRange(selection)}
+              rangeColors={["#FD5B61"]}
             />
-          </div>
-          <DateRangePicker
-            className="text-base font-normal"
-            ranges={[selectionRange]}
-            minDate={new Date()}
-            onChange={({ selection }) => setSelectionRange(selection)}
-            rangeColors={["#FD5B61"]}
-          />
-          <div className="font-base flex space-x-8 pt-2 text-sm">
-            <button
-              className="flex-grow rounded-lg bg-gray-100 py-2 text-gray-700 shadow-sm hover:shadow-md"
-              onClick={resetInput}
-            >
-              Cancel
-            </button>
-            <button className="flex-grow rounded-lg  bg-airbnb text-white shadow-sm hover:shadow-md">
-              Search
-            </button>
-          </div>
-        </div>
-      )}
+            <div className="font-base flex space-x-8 pt-2 text-sm">
+              <button
+                className="flex-grow rounded-lg bg-gray-100 py-2 text-gray-700 shadow-sm hover:shadow-md"
+                onClick={resetInput}
+              >
+                Cancel
+              </button>
+              <button className="flex-grow rounded-lg  bg-airbnb text-white shadow-sm hover:shadow-md">
+                Search
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
