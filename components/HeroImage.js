@@ -12,12 +12,18 @@ function HeroImage() {
         <button
           className="fond-bold my-3 rounded-full bg-white px-10 py-4 text-purple-500 shadow-md transition duration-150 hover:shadow-lg active:scale-90"
           onClick={() => {
+            var today = new Date();
+            var nextweek = new Date(
+              today.getFullYear(),
+              today.getMonth(),
+              today.getDate() + 7
+            );
             router.push({
               pathname: "/search",
               query: {
                 location: "Anywhere",
-                startDate: new Date().toISOString(),
-                endDate: (new Date(new Date().getTime()+(7*24*60*60*1000))).toISOString(),
+                startDate: today.toISOString(),
+                endDate: nextweek.toISOString(),
                 numberOfGuests: 2
               }
             });

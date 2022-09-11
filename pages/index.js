@@ -11,12 +11,18 @@ import { useRouter } from "next/router";
 export default function Home({ exploreData, liveAnywhereData }) {
   const router = useRouter();
   const searchLocation = (location) => {
+    var today = new Date();
+    var nextweek = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate() + 7
+    );
     router.push({
       pathname: "/search",
       query: {
         location,
-        startDate: new Date().toISOString(),
-        endDate: (new Date(new Date().getTime()+(7*24*60*60*1000))).toISOString(),
+        startDate: today.toISOString(),
+        endDate: nextweek.toISOString(),
         numberOfGuests: 2
       }
     });
