@@ -4,8 +4,9 @@ import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format as formatDate } from "date-fns";
 import { getSearchResultsData } from "../utils/fakeData";
+import InfoCard from "../components/InfoCard";
 
-export default function Search() {
+export default function Search({ searchResultsData }) {
   const router = useRouter();
   const { numberOfGuests, location, startDate, endDate } = router.query;
 
@@ -29,8 +30,8 @@ export default function Search() {
         } Guests`}
       />
 
-      <main>
-        <seciton>
+      <main className="flex">
+        <seciton className="flex-grow px-6 pt-6">
           <p className="text-sm">
             300+ Stays - {formattedDateRange} - for {numberOfGuests || 2} Guests
           </p>
@@ -50,9 +51,11 @@ export default function Search() {
             <p className="filter-button transparent-selection">More Filters</p>
           </div>
 
-          {/* {searchResults.map((x) => (
-            <p>{x.location}</p>
-          ))} */}
+          <div className="flex flex-col">
+            {searchResultsData.map((item) => (
+              <InfoCard key={item.title} item={item} />
+            ))}
+          </div>
         </seciton>
       </main>
 
@@ -61,10 +64,10 @@ export default function Search() {
   );
 }
 
-// export async function getStaticProps() {
-//   return {
-//     props: {
-//       searchResults: getSearchResultsData()
-//     }
-//   };
-// }
+export async function getServerSideProps() {
+  return {
+    props: {
+      searchResultsData: getSearchResultsData()
+    }
+  };
+}
