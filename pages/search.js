@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { useRouter } from "next/router";
 import { format as formatDate } from "date-fns";
+import { getSearchResultsData } from "../utils/fakeData";
 
 export default function Search() {
   const router = useRouter();
@@ -48,6 +49,10 @@ export default function Search() {
             </p>
             <p className="filter-button transparent-selection">More Filters</p>
           </div>
+
+          {/* {searchResults.map((x) => (
+            <p>{x.location}</p>
+          ))} */}
         </seciton>
       </main>
 
@@ -55,3 +60,11 @@ export default function Search() {
     </div>
   );
 }
+
+// export async function getStaticProps() {
+//   return {
+//     props: {
+//       searchResults: getSearchResultsData()
+//     }
+//   };
+// }
