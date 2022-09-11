@@ -112,13 +112,16 @@ function Header() {
             />
             <div className="font-base flex space-x-8 pt-2 text-sm">
               <button
-                className="flex-grow rounded-lg bg-gray-100 py-2 text-gray-700 shadow-sm hover:shadow-md"
+                className="flex-grow rounded-xl bg-gray-100 py-3 text-gray-700 shadow-sm hover:shadow-md"
                 onClick={resetInput}
               >
                 Cancel
               </button>
-              <button className="flex-grow rounded-lg  bg-airbnb text-white shadow-sm hover:shadow-md">
-                Search
+              <button className="flex-grow rounded-xl bg-airbnb py-3 text-white shadow-sm hover:shadow-md">
+                <div className="flex place-content-center items-center">
+                  <SearchIcon className="mr-1 h-4" />
+                  Search
+                </div>
               </button>
             </div>
           </motion.div>
