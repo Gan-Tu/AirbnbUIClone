@@ -12,8 +12,10 @@ import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
-function Header() {
+function Header({ placeholder }) {
+  const router = useRouter();
   const [searchInput, setSearchInput] = useState("");
   const [numberOfGuests, setNumberOfGuests] = useState(2);
   const [selectionRange, setSelectionRange] = useState({
@@ -40,13 +42,14 @@ function Header() {
           objectFit="contain"
           objectPosition="left"
           alt="Airbnb logo"
+          onClick={() => router.push("/")}
         />
       </div>
 
       <div className="flex cursor-pointer items-center rounded-full border py-2 md:border-2 md:shadow-sm md:hover:shadow-md">
         <input
           type="text"
-          placeholder="Start your search"
+          placeholder={placeholder || "Start your search"}
           value={searchInput}
           onChange={(e) => setSearchInput(e.target.value)}
           className="grow border-transparent bg-transparent pl-5 text-sm text-gray-500 outline-none placeholder:text-gray-400"
@@ -117,7 +120,20 @@ function Header() {
               >
                 Cancel
               </button>
-              <button className="flex-grow rounded-xl bg-airbnb py-3 text-white shadow-sm hover:shadow-md">
+              <button
+                className="flex-grow rounded-xl bg-airbnb py-3 text-white shadow-sm hover:shadow-md"
+                onClick={() =>
+                  router.push({
+                    pathname: "/search",
+                    query: {
+                      location: searchInput,
+                      startDate: selectionRange.startDate.toISOString(),
+                      endDate: selectionRange.endDate.toISOString(),
+                      numberOfGuests
+                    }
+                  })
+                }
+              >
                 <div className="flex place-content-center items-center">
                   <SearchIcon className="mr-1 h-4" />
                   Search

@@ -6,14 +6,29 @@ import MediumCard from "../components/MediumCard";
 import LargeCard from "../components/LargeCard";
 import Footer from "../components/Footer";
 import { getExploreData, getLiveAnywhereData } from "../utils/fakeData";
+import { useRouter } from "next/router";
 
 export default function Home({ exploreData, liveAnywhereData }) {
+  const router = useRouter();
+  const searchLocation = (location) => {
+    router.push({
+      pathname: "/search",
+      query: {
+        location,
+        startDate: new Date().toISOString(),
+        endDate: (new Date(new Date().getTime()+(7*24*60*60*1000))).toISOString(),
+        numberOfGuests: 2
+      }
+    });
+  };
+
   return (
     <div className="">
       <Head>
         <title>Airbnb UI Clone</title>
         <meta name="description" content="Airbnb UI Clone created by Gan" />
       </Head>
+
       <Header />
       <HeroImage />
 
@@ -28,6 +43,7 @@ export default function Home({ exploreData, liveAnywhereData }) {
                   img={img}
                   title={location}
                   subtitle={distance}
+                  onClick={() => searchLocation(location)}
                 />
               ))}
             </div>
