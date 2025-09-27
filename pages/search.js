@@ -1,10 +1,10 @@
-import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { useRouter } from "next/router";
 import { format as formatDate } from "date-fns";
-import { getSearchResultsData } from "../utils/fakeData";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 import InfoCard from "../components/InfoCard";
+import { getSearchResultsData } from "../utils/fakeData";
 
 export default function Search({ searchResultsData }) {
   const router = useRouter();
@@ -20,8 +20,11 @@ export default function Search({ searchResultsData }) {
   return (
     <div className="hscreen">
       <Head>
-        <title>Search Results - Airbnb UI Clone</title>
-        <meta name="description" content="Airbnb UI Clone created by Gan" />
+        <title>Search Results - Short Term Rental UI Clone</title>
+        <meta
+          name="description"
+          content="Short Term Rental UI Clone created by Gan"
+        />
       </Head>
 
       <Header

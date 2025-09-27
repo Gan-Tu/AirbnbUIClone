@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import Image from "next/image";
+import { MinusCircleIcon, PlusCircleIcon } from "@heroicons/react/outline";
 import {
-  SearchIcon,
   GlobeAltIcon,
   MenuIcon,
+  SearchIcon,
   UserCircleIcon,
   UsersIcon
 } from "@heroicons/react/solid";
-import { PlusCircleIcon, MinusCircleIcon } from "@heroicons/react/outline";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
+import { DateRangePicker } from "react-date-range";
 import "react-date-range/dist/styles.css"; // main style file
 import "react-date-range/dist/theme/default.css"; // theme css file
-import { DateRangePicker } from "react-date-range";
-import { motion, AnimatePresence } from "framer-motion";
-import { useRouter } from "next/router";
 
 function Header({ placeholder }) {
   const router = useRouter();
@@ -34,14 +34,14 @@ function Header({ placeholder }) {
   };
 
   return (
-    <header className="sticky top-0 z-50 grid grid-cols-3 items-center bg-white p-5 shadow-md md:px-10 ">
-      <div className="relative my-auto flex h-10 cursor-pointer items-center">
+    <header className="sticky top-[64px] z-50 grid grid-cols-3 items-center bg-white p-5 shadow-md md:top-[40px] md:px-10 ">
+      <div className="relative my-auto flex h-12 cursor-pointer items-center">
         <Image
-          src="https://links.papareact.com/qd3"
+          src="/tent.png"
           layout="fill"
           objectFit="contain"
           objectPosition="left"
-          alt="Airbnb logo"
+          alt="Tent logo"
           onClick={() => router.push("/")}
         />
       </div>

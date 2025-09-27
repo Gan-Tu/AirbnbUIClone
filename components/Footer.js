@@ -5,11 +5,11 @@ function Footer() {
     <div className="grid grid-cols-2 place-content-between gap-y-10 bg-gray-100 p-14 text-gray-600 md:grid-cols-4 md:px-32 md:py-14">
       <div className="space-y-4 text-sm text-gray-800">
         <h5 className="font-bold uppercase">About</h5>
-        <p>How Airbnb Works</p>
+        <p>How Clone Works</p>
         <p>Newsroom</p>
         <p>Investors</p>
-        <p>Airbnb Plus</p>
-        <p>Airbnb Luxe</p>
+        <p>Clone Plus</p>
+        <p>Clone Luxe</p>
       </div>
 
       <div className="hidden space-y-4 text-sm text-gray-800 md:inline">

@@ -1,12 +1,12 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
+import Footer from "../components/Footer";
 import Header from "../components/Header";
 import HeroImage from "../components/HeroImage";
-import SmallCard from "../components/SmallCard";
-import MediumCard from "../components/MediumCard";
 import LargeCard from "../components/LargeCard";
-import Footer from "../components/Footer";
+import MediumCard from "../components/MediumCard";
+import SmallCard from "../components/SmallCard";
 import { getExploreData, getLiveAnywhereData } from "../utils/fakeData";
-import { useRouter } from "next/router";
 
 export default function Home({ exploreData, liveAnywhereData }) {
   const router = useRouter();
@@ -31,8 +31,8 @@ export default function Home({ exploreData, liveAnywhereData }) {
   return (
     <div className="">
       <Head>
-        <title>Airbnb UI Clone</title>
-        <meta name="description" content="Airbnb UI Clone created by Gan" />
+        <title>Short Term Rental UI Clone</title>
+        <meta name="description" content="Short Term Rental  UI Clone created by Gan" />
       </Head>
 
       <Header />
@@ -70,7 +70,7 @@ export default function Home({ exploreData, liveAnywhereData }) {
         <LargeCard
           img="https://links.papareact.com/4cj"
           title="The Greatest Outdoors"
-          description="Wishlists curated by Airbnb."
+          description="Wishlists curated by Short Term Rental ."
           buttonText="Get Inspired"
         />
       </main>
